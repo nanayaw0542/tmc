@@ -43,7 +43,7 @@
           <form method="post" enctype="multipart/form-data">
           <div class="card-body">
             <div class="row">
-              <div class="col-md-3">
+              <div class="col-md-3" hidden>
                   <label>Member Code</label>
                   <input type="text" name="memberid" placeholder="Member Code" id="passInput" class="form-control" value="<?=set_value("memberid")?>" readonly>
               

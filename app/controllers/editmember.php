@@ -5,9 +5,13 @@
  */
 class editmember extends Controller
 {
-	
 	function index()
 	{
+		$db = new Database();
+		$titles = $db->query("select * from title");
+		$education = $db->query("select * from education");
+		$certificate = $db->query("select * from certificate");
+		$ministry = $db->query("select * from ministry");
 	$errors = [];
 
 	$user = new Member();

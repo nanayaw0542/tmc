@@ -1,4 +1,4 @@
-<title>T M C S | Add Member</title>
+<title>T M C S | Edit Member</title>
 <?php require viewsPath("partials/header"); ?>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -19,12 +19,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Add New Member</h1>
+            <h1>Edit Member</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?=ROOT?>/managemembers">Manage Members</a></li>
-              <li class="breadcrumb-item active">Add Member</li>
+              <li class="breadcrumb-item"><a href="<?=ROOT?>/addmember">Add Member</a></li>
+              <li class="breadcrumb-item active">Edit Member</li>
             </ol>
           </div>
         </div>
@@ -37,23 +37,26 @@
         <!-- SELECT2 EXAMPLE -->
         <div class="card card-default">
           <div class="card-header">
-            <h3 class="card-title"><h3><b>ADD A NEW MEMBER</b></h3></h3>
+            <h3 class="card-title"><h3><b>EDIT MEMBER</b></h3></h3>
           </div>
           <!-- /.card-header -->
           <form method="post" enctype="multipart/form-data">
           <div class="card-body">
             <div class="row">
-              <div class="col-md-3">
+              <div class="col-md-3" hidden>
                   <label>Member Code</label>
                   <input type="text" name="memberid" placeholder="Member Code" id="passInput" class="form-control" value="<?=set_value("memberid")?>" readonly>
               
               </div>
-              <input type="text" name="addedid" value="<?=Auth::get('UserId')?>" hidden>
-              <input type="text" name="userid" value="<?=Auth::get('UserId')?>" hidden>
+              <input type="text" name="updatedid" value="<?=Auth::get('UserId')?>" hidden>
+              <!-- <input type="text" name="userid" value="<?=Auth::get('UserId')?>" hidden> -->
               <div class="col-md-3">
                 <label>Title</label>
                 <select class="form-control <?=!empty($errors['titleid']) ? 'border-danger': ''?>" name="titleid">
-                  <option <?=get_select('titleid',"")?> selected disabled>-select-</option>
+                  <?php $tit = get_title_by_id($row["TitleId"]);
+                    $tits = $tit["Title"];
+                   ?>
+                  <option selected value="<?=$row["TitleId"]?>"><?=$tits?></option>
                   <?php foreach($titles as $title) {?>
                    <option value="<?=$title["TitleId"]?>"><?=$title["Title"]?></option>
                  <?php } ?>
@@ -64,7 +67,7 @@
               </div>
               <div class="col-md-3">
                   <label>First Name</label>
-                  <input type="text" class="form-control <?=!empty($errors['firstname']) ? 'border-danger': ''?>" name="firstname" autofocus placeholder="First Name" value="<?=set_value("firstname")?>" autocomplete="off">
+                  <input type="text" class="form-control <?=!empty($errors['firstname']) ? 'border-danger': ''?>" name="firstname" autofocus placeholder="First Name" value="<?=set_value("firstname",$row["Firstname"])?>" autocomplete="off">
                   <?php if(!empty($errors['firstname'])) : ?>
                   <small style="font-size: 10px; font-style: italic;" class="text-danger col-12"><?=$errors['firstname']?></small>
                   <?php endif;?>
@@ -72,7 +75,7 @@
 
                <div class="col-md-3">
                   <label>Last Name</label>
-                  <input type="text" class="form-control <?=!empty($errors['lastname']) ? 'border-danger': ''?>" name="lastname" id="lname" autocomplete="off" placeholder="Last Name"  value="<?=set_value("lastname")?>">
+                  <input type="text" class="form-control <?=!empty($errors['lastname']) ? 'border-danger': ''?>" name="lastname" id="lname" autocomplete="off" placeholder="Last Name"  value="<?=set_value("lastname",$row["Lastname"])?>">
                   <?php if(!empty($errors['lastname'])) : ?>
                   <small style="font-size: 10px; font-style: italic;" class="text-danger col-12"><?=$errors['lastname']?></small>
                   <?php endif;?>
@@ -81,7 +84,7 @@
                <div class="col-md-3">
                   <label>Gender</label>
                   <select class="form-control <?=!empty($errors['gender']) ? 'border-danger': ''?>" name="gender">
-                      <option <?=get_select('gender',"")?> selected disabled>-select-</option>
+                      <option value="<?=$row["Gender"]?>" selected ><?=$row["Gender"]?></option>
                      <option <?=get_select('gender',"Male")?> value="Male">Male</option>
                      <option <?=get_select('gender',"Female")?> value="Female">Female</option>
                   </select>
@@ -92,7 +95,7 @@
 
               <div class="col-md-3">
                   <label>Date of Birth</label>
-                  <input type="text" name="dob" value="<?=set_value("dob")?>" autocomplete="off" class="form-control <?=!empty($errors['dob']) ? 'border-danger': ''?>" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm" data-mask >
+                  <input type="text" name="dob" value="<?=set_value("dob",$row["DOB"])?>" autocomplete="off" class="form-control <?=!empty($errors['dob']) ? 'border-danger': ''?>" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm" data-mask >
                   <?php if(!empty($errors['dob'])) : ?>
                 <small style="font-size: 10px;font-style: italic;" class="text-danger"><?=$errors['dob']?></small>
                 <?php endif;?>
@@ -101,7 +104,7 @@
               <div class="col-md-3">
                 <label>Age Range (Bracket)</label>
                 <select class="form-control <?=!empty($errors['agerange']) ? 'border-danger': ''?>" name="agerange">
-                  <option <?=get_select('agerange',"")?> selected disabled>-select-</option>
+                  <option selected value="<?=$row["AgeRange"]?>"><?=$row["AgeRange"]?></option>
                      <option <?=get_select('agerange',"13-19")?> value="13-19">13-19</option>
                      <option <?=get_select('agerange',"20-29")?> value="20-29">20-29</option>
                      <option <?=get_select('agerange',"30-39")?> value="30-39">30-39</option>
@@ -118,7 +121,7 @@
               <div class="col-md-3">
                 <label>Marital Status</label>
                 <select class="form-control <?=!empty($errors['maritalstatus']) ? 'border-danger': ''?>" name="maritalstatus">
-                  <option <?=get_select('maritalstatus',"")?> selected disabled>-select-</option>
+                  <option value="<?=$row["MaritalStatus"]?>" selected ><?=$row["MaritalStatus"]?></option>
                    <option <?=get_select('maritalstatus',"Single")?> value="Single">Single</option>
                    <option <?=get_select('maritalstatus',"Married")?> value="Married">Married</option>
                    <option <?=get_select('maritalstatus',"Seperated")?> value="Seperated">Seperated</option>
@@ -131,7 +134,7 @@
               <div class="col-md-3">
                   <label>Nationality</label>
                   <select class="form-control <?=!empty($errors['country']) ? 'border-danger': ''?>" name="country" >
-                      <option disabled selected>-select-</option>
+                      <option value="<?=$row["Country"]?>" selected><?=$row["Country"]?></option>
                       <option value="Ghanaian">Ghanaian</option>
                       <option value="Togolese">Togolese</option>
                   </select>
@@ -140,7 +143,7 @@
                 <div class="col-md-3">
                   <label>Region</label>
                   <select class="form-control" name="region">
-                      <option selected disabled>-select-</option>
+                      <option selected value="<?=$row["Region"]?>"><?=$row["Region"]?></option>
                       <option value="Ashanti">Ashanti</option>
                       <option value="Ashanti">Ashanti</option>
                       <option value="Ashanti">Ashanti</option>
@@ -149,7 +152,7 @@
 
               <div class="col-md-3">
                   <label>Location</label>
-                  <input type="text" name="address" value="<?=set_value("address")?>" class="form-control <?=!empty($errors['address']) ? 'border-danger': ''?>" placeholder="Address of Location">
+                  <input type="text" name="address" value="<?=set_value("address",$row["Address"])?>" class="form-control <?=!empty($errors['address']) ? 'border-danger': ''?>" placeholder="Address of Location">
                   <?php if(!empty($errors['address'])) : ?>
                 <small style="font-size: 10px;font-style: italic;" class="text-danger"><?=$errors['address']?></small>
                 <?php endif;?>
@@ -157,7 +160,7 @@
 
               <div class="col-md-3">
                   <label>Email</label>
-                  <input type="email" class="form-control rounded <?=!empty($errors['email']) ? 'border-danger': ''?>" placeholder="Email Address" name="email" value="<?=set_value('email')?>"/>
+                  <input type="email" class="form-control rounded <?=!empty($errors['email']) ? 'border-danger': ''?>" placeholder="Email Address" name="email" value="<?=set_value('email',$row["Email"])?>"/>
                   <?php if(!empty($errors['email'])) : ?>
                 <small style="font-size: 10px;font-style: italic;" class="text-danger"><?=$errors['email']?></small>
                 <?php endif;?>
@@ -165,14 +168,14 @@
 
               <div class="col-md-3">
                   <label>Telephone # (Whatsapp)</label>
-                  <input type="text" name="telephone1" class="form-control <?=!empty($errors['telephone1']) ? 'border-danger': ''?>" value="<?=set_value("telephone1")?>" placeholder="Telephone # (Whatsapp)">
+                  <input type="text" name="telephone1" class="form-control <?=!empty($errors['telephone1']) ? 'border-danger': ''?>" value="<?=set_value("telephone1",$row["Telephone1"])?>" placeholder="Telephone # (Whatsapp)">
                   <?php if(!empty($errors['telephone1'])) : ?>
                 <small style="font-size: 10px;font-style: italic;" class="text-danger"><?=$errors['telephone1']?></small>
                 <?php endif;?>
               </div>
               <div class="col-md-3">
                   <label>Telephone Number 2</label>
-                  <input type="text" name="telephone2" class="form-control" value="<?=set_value("telephone2")?>" placeholder="Telephone Number">
+                  <input type="text" name="telephone2" class="form-control" value="<?=set_value("telephone2",$row["Telephone2"])?>" placeholder="Telephone Number">
               </div>
 
               <div class="col-md-3">
