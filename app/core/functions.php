@@ -220,10 +220,10 @@ function get_title_by_id($titleid)
 	return $subject->getSpecific(['titleid' =>$titleid]);
 }
 
-function get_class_by_id($classid)
+function get_edu_by_id($educationid)
 {
-	$class = new Classes();
-	return $class->getSpecific(['classid' =>$classid]);
+	$education = new Education();
+	return $education->getSpecific(['educationid' =>$educationid]);
 }
 
 function get_student_by_id($studentid)
