@@ -226,10 +226,10 @@ function get_edu_by_id($educationid)
 	return $education->getSpecific(['educationid' =>$educationid]);
 }
 
-function get_student_by_id($studentid)
+function get_cert_by_id($certificateid)
 {
-	$class = new Student();
-	return $class->getSpecific(['studentid' =>$studentid]);
+	$class = new Certificate();
+	return $class->getSpecific(['certificateid' =>$certificateid]);
 }
 function get_system_by_id($systemid)
 {

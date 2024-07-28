@@ -119,6 +119,17 @@ class Member extends Model
 		{
 			$errors['email'] = "Email is not valid";
 		}
+		if(!$userid){
+			if ($this->wheremember(["Telephone1"=> $_POST['telephone1']])) {
+		$errors['telephone1'] = "This Member already exists, please enter a new one!";
+		}
+		}
+		else{
+			if (empty($data['telephone1'])) 
+		{
+			$errors['telephone1'] = "Username is required";
+		}
+		}
 
 		// CHECK IMAGE
 		// $ext = strtolower(pathinfo($data['image']['name'],PATHINFO_EXTENSION));

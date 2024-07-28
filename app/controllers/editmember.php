@@ -16,7 +16,6 @@ class editmember extends Controller
 
 	$user = new Member();
 
-
 	$userid = $_GET['memberid'] ?? null;
 
 	$row = $user->getSpecific(['memberid'=>$userid]);
@@ -61,11 +60,11 @@ class editmember extends Controller
 				}
 			}
 
-			if(empty($_POST['username'])){
-				unset($_POST['username']);
+			if(empty($_POST['telephone1'])){
+				unset($_POST['telephone1']);
 			}
 
-			$user->updateuser($row['UserId'],$_POST);
+			$user->updatemember($row['MemberId'],$_POST);
 
 			// authenticate($_POST);
 

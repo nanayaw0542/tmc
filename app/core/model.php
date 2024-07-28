@@ -541,7 +541,7 @@ public function deleteport($portfolioid)
 	}
 
 	// FUNCTION TO SELECT WHERE DATA IN A TABLE
-	public function whereuser($data, $limit = 10, $offset = 0, $order = "desc", $order_column = "userid")
+	public function wheremember($data, $limit = 10, $offset = 0, $order = "desc", $order_column = "memberid")
 	{
 		// "select * from users where Username = :username && Password = :password"
 		$keys = array_keys($data);

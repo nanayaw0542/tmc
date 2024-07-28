@@ -182,9 +182,9 @@
                 <label>Education Level:</label>
                 <select class="form-control <?=!empty($errors['educationid']) ? 'border-danger': ''?>" name="educationid">
                   <?php $level = get_edu_by_id($row["EducationId"]);
-                    $edu = $level["Category"];
+                    $edus = $level["Category"];
                    ?>
-                  <option selected disabled>-select-</option>
+                  <option selected value="<?=$row["EducationId"]?>"><?=$edus?></option>
                   <?php foreach($education as $edu) {?>
                     <option value="<?=$edu["EducationId"]?>"><?=$edu["Category"]?></option>
                     <?php } ?>
@@ -197,7 +197,10 @@
             <div class="col-md-3">
                 <label>Certificate Attained:</label>
                 <select class="form-control <?=!empty($errors['certificateid']) ? 'border-danger': ''?>" name="certificateid">
-                  <option selected disabled>-select-</option>
+                  <?php $level = get_cert_by_id($row["CertificateId"]);
+                    $certs = $level["CertificateName"];
+                   ?>
+                  <option selected value="<?=$row["CertificateId"]?>"><?=$certs?></option>
                   <?php foreach($certificate as $cert) {?>
                     <option value="<?=$cert["CertificateId"]?>"><?=$cert["CertificateName"]?></option>
                     <?php } ?>
@@ -209,7 +212,7 @@
 
             <div class="col-md-3">
                 <label>Occupation</label>
-                <input type="text" name="occupation" class="form-control <?=!empty($errors['occupation']) ? 'border-danger': ''?>" value="<?=set_value("occupation")?>" placeholder="Occupation">
+                <input type="text" name="occupation" class="form-control <?=!empty($errors['occupation']) ? 'border-danger': ''?>" value="<?=set_value("occupation",$row["Occupation"])?>" placeholder="Occupation">
                 <?php if(!empty($errors['occupation'])) : ?>
               <small style="font-size: 10px;font-style: italic;" class="text-danger"><?=$errors['occupation']?></small>
               <?php endif;?>
@@ -223,7 +226,10 @@
             <div class="col-md-3">
                 <label>Ministry</label>
                 <select class="form-control <?=!empty($errors['ministryid']) ? 'border-danger': ''?>" name="ministryid" >
-                    <option selected disabled>-select-</option>
+                   <?php $level = get_ministry_by_id($row["MinistryId"]);
+                    $mini = $level["MinistryName"];
+                   ?>
+                  <option selected value="<?=$row["MinistryId"]?>"><?=$mini?></option>
                     <?php foreach($ministry as $min) {?>
                    <option value="<?=$min["MinistryId"]?>"><?=$min["MinistryName"]?></option>
                  <?php } ?>
@@ -233,11 +239,11 @@
               <?php endif;?>
             </div>
 
-            <div class="col-md-3" hidden>
+            <div class="col-md-3">
                 <label>Status</label>
                 <select class="form-control" name="status">
-                    <option <?=get_select('status',"")?>  disabled>-select-</option>
-                   <option <?=get_select('status',"Active")?>selected value="Active">Active</option>
+                    <option value="<?=$row["Status"]?>" selected ><?=$row["Status"]?></option>
+                   <option <?=get_select('status',"Active")?>value="Active">Active</option>
                    <option <?=get_select('status',"Inactive")?> value="Inactive">Inactive</option>
                 </select>
             </div>
@@ -248,10 +254,10 @@
                    <?php if(!empty($errors['image'])) : ?>
                     <small style="font-size: 10px;font-style: italic;" class="text-danger"><?=$errors['image']?></small>
                     <?php endif;?>
-                  </div><img src="assets/image/no-image.png" id="userImage" alt="image" class="shadow" style="width: 15%; display: inline-block;"><br> 
+                  </div><img src="<?=$row["Image"]?>" id="userImage" alt="image" class="rounded-circle shadow" style="width: 15%; display: inline-block;"><br>
 
                   <div class="col-md-12"><br>
-                    <button class="btn btn-primary">SUBMIT</button>
+                    <button class="btn btn-success">UPDATE</button>
                     <a href="<?=ROOT?>/manageusers"><button type="button" class="btn btn-warning">RESET</button></a>
                 </div>
 
