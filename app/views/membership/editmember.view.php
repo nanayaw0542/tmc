@@ -181,8 +181,8 @@
               <div class="col-md-3">
                 <label>Education Level:</label>
                 <select class="form-control <?=!empty($errors['educationid']) ? 'border-danger': ''?>" name="educationid">
-                  <?php $level = get_edu_by_id($row["TitleId"]);
-                    $tits = $level["Title"];
+                  <?php $level = get_edu_by_id($row["EducationId"]);
+                    $edu = $level["Category"];
                    ?>
                   <option selected disabled>-select-</option>
                   <?php foreach($education as $edu) {?>
