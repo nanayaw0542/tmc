@@ -9,5 +9,4 @@ class Education extends Model
 {
 	protected $table = "education";
 
-	
 }
