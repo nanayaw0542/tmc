@@ -172,7 +172,7 @@
                   <?php if(!empty($errors['telephone1'])) : ?>
                 <small style="font-size: 10px;font-style: italic;" class="text-danger"><?=$errors['telephone1']?></small>
                 <?php endif;?>
-              </div>y
+              </div>
               <div class="col-md-3">
                   <label>Telephone Number 2</label>
                   <input type="text" name="telephone2" class="form-control" value="<?=set_value("telephone2",$row["Telephone2"])?>" placeholder="Telephone Number">
