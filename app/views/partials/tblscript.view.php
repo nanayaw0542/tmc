@@ -19,6 +19,7 @@
 <script src="vendors/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="vendors/dist/js/demo.js"></script>
+<!-- <script src="vendors/select2.min.js"></script> -->
 <!-- Page specific script -->
 <script>
   $(function () {
@@ -36,6 +37,7 @@
       "responsive": true,
     });
   });
+  
 </script>
 </body>
 </html>

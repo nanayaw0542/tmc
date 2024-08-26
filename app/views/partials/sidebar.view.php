@@ -240,7 +240,7 @@ $db = new Database();
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
+                <a href="<?=ROOT?>/addattendance" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Attendance</p>
                 </a>

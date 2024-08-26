@@ -319,9 +319,7 @@
      </script>
 
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <?php require viewsPath("partials/footer"); ?>
-  </footer>
+  
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -468,3 +466,6 @@
   }
   // DropzoneJS Demo Code End
 </script>
+<footer class="main-footer">
+    <?php require viewsPath("partials/footer"); ?>
+  </footer>

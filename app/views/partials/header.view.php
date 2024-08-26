@@ -15,8 +15,9 @@
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="vendors/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- Select2 -->
-  <link rel="stylesheet" href="vendors/plugins/select2/css/select2.min.css">
-  <link rel="stylesheet" href="vendors/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <!-- <link rel="stylesheet" href="vendors/plugins/select2/css/select2.min.css"> -->
+  <!-- <link rel="stylesheet" href="vendors/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">  -->
+  <link rel="stylesheet" href="vendors/select2.min.css">
   <!-- Bootstrap4 Duallistbox -->
   <link rel="stylesheet" href="vendors/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
    <!-- dropzonejs -->
@@ -36,5 +37,6 @@
   <link rel="stylesheet" href="vendors/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="vendors/datatables-buttons/css/buttons.bootstrap4.min.css">
   <link rel="stylesheet" href="vendors/summernote/summernote-bs4.min.css">
+ 
   
 </head>
