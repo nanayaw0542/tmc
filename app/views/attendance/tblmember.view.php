@@ -2,7 +2,7 @@
     <?php $i=0; foreach($members as $user){$i++; ?>
   <tr>
     <td><?=$i?></td>
-    <td style="font-size: 12px;"><?=$user['MemberId']?></td>
+    <td><?=$user['MemberId']?></td>
       <?php 
       $getministry = get_title_by_id($user['TitleId']);
       if (empty($getministry)) {
@@ -12,7 +12,7 @@
       $title = $getministry["Title"];
     }
      ?>
-    <td style="font-size: 12px;"><?=$title.'. '.$user['Fullname']?></td>
+    <td><?=$title.'. '.$user['Fullname']?></td>
     <?php 
       $ministries = get_ministry_by_id($user['MinistryId']);
       if (empty($ministries)) {
@@ -22,7 +22,7 @@
       $ministry = $ministries["MinistryName"];
     }
      ?>
-    <td style="font-size: 12px;"><?=$ministry?></td>
+    <td><?=$ministry?></td>
   </tr>
  <?php } ?>
  <?php endif; ?>

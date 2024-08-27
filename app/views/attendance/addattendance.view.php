@@ -34,7 +34,7 @@
         <div class="row">
           <div class="col-12">
             <!-- /.card -->
-
+          <form method="post">
             <div class="card">
               
               <div class="card-header">
@@ -42,6 +42,7 @@
                 
               </div>
               <!-- /.card-header -->
+
               <div class="row p-3">
                 <div class="col-xl-3 col-md-6 mt-3">
                   <label>Sort By</label>
@@ -77,10 +78,10 @@
                 <table id="example" class="table table-bordered table-striped" style="width:100%;">
                   <thead>
                   <tr>
-                    <th style="font-size: 12px;">#</th>
-                    <th style="font-size: 12px;">Member Code</th>
-                    <th style="font-size: 12px;">Name</th>
-                    <th style="font-size: 12px;">Ministry</th>
+                    <th>#</th>
+                    <th>Member Code</th>
+                    <th>Name</th>
+                    <th>Ministry</th>
                   </tr>
                   </thead>
                   <tbody id="memberBody">
@@ -91,14 +92,14 @@
               <div class="col-xl-4">
             <table class="table table-bordered table-striped">
               <thead>
-                <th>PRESENT</th>
-                <th>ABSENT</th>
+                <th style="color: green;">MARK ATTENDANCE</th>
+                <!-- <th>ABSENT</th> -->
                 <!-- Present <td><input type="radio" class="form-control" name=""></td> -->
               </thead>
               <tbody>
                 <tr>
-                  <td>Present <input type="radio" class="" name=""></td>
-                  <td>Absent <input type="radio" class="" name=""></td>
+                  <td><input type="radio" class="" value="1" name=""> Present </td>
+                 
                 </tr>
               </tbody>
             </table>
@@ -109,6 +110,10 @@
             </div> 
             
           </div>
+          <div class="col-xl-4 col-md-6">
+            <button class="btn btn-primary">Submit</button>
+          </div>
+        </form>
             <!-- /.card -->
 
           </div>

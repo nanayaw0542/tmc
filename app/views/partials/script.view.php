@@ -13,6 +13,7 @@
 <!-- Select2 -->
 <script src="vendors/select2/js/select2.full.min.js"></script>
 <script src="vendors/select2.min.js"></script>
+<script src="vendors/xlsx.full.min.js"></script>
 <!-- Bootstrap4 Duallistbox -->
 <script src="vendors/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
 <!-- InputMask -->

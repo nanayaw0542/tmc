@@ -13,7 +13,7 @@ class addmember extends Controller
 		$titles = $db->query("select * from title");
 		$education = $db->query("select * from education");
 		$certificate = $db->query("select * from certificate");
-		$ministry = $db->query("select * from ministry");
+		$ministry = $db->query("select * from ministry order by ministryname");
 
 		$errors = [];
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {

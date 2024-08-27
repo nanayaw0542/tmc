@@ -258,7 +258,7 @@
 
                   <div class="col-md-12"><br>
                     <button class="btn btn-success">UPDATE</button>
-                    <a href="<?=ROOT?>/manageusers"><button type="button" class="btn btn-warning">RESET</button></a>
+                    <a href="<?=ROOT?>/managemembers"><button type="button" class="btn btn-warning">RESET</button></a>
                 </div>
 
             </div>

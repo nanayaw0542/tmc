@@ -19,7 +19,7 @@ class addattendance extends Controller
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
-			$user = new Member();
+			$user = new Attendance();
 
 
 			$errors = $user->validate($_POST);
