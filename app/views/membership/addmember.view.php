@@ -52,7 +52,7 @@
             <div class="row">
               <div class="col-md-3" hidden>
                   <label>Member Code</label>
-                  <input type="text" name="memberid" placeholder="Member Code" id="passInput" class="form-control" value="<?=set_value("memberid")?>" readonly>
+                  <input type="text" name="memberid" id="passInput" onchange="makePass(this);" placeholder="Member Code" class="form-control" readonly>
               
               </div>
               <input type="text" name="addedid" value="<?=Auth::get('UserId')?>" hidden>
@@ -228,6 +228,7 @@
                     <?php foreach($ministry as $min) {?>
                    <option value="<?=$min["MinistryId"]?>"><?=$min["MinistryName"]?></option>
                  <?php } ?>
+                 <!-- <option value="No Ministry">No Ministry</option> -->
                 </select>
                 <?php if(!empty($errors['ministryid'])) : ?>
               <small style="font-size: 10px;font-style: italic;" class="text-danger"><?=$errors['ministryid']?></small>
@@ -271,11 +272,17 @@
   </div>
   <script>
      function makePass(length) {
-           
+           var result = '';
+          var characters = '0123456789';
+          var charactersLength = characters.length;
+          for (var i = 0; i < length; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            // counter += 1;
+          }
           var passInput = document.getElementById('passInput');
-          passInput.value = "TMCS"+ <?php echo date('y') .date("m") . rand(100,999)?>;
+          passInput.value = "TMCS"+ <?php echo date('y') .date("m")?> + result;
          }
-         makePass(3);
+         makePass(4);
 
          function readUrl(input) {
              // body...

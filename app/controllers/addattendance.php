@@ -10,8 +10,8 @@ class addattendance extends Controller
 	function index()
 	{
 		$db = new Database();
-		$titles = $db->query("select * from title");
-		$education = $db->query("select * from education");
+		// $titles = $db->query("select * from title");
+		// $education = $db->query("select * from education");
 		$ministry = $db->query("select * from ministry order by ministryname asc");
 		$members = $db->query("select * from members order by fullname asc");
 

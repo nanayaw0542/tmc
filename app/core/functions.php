@@ -186,11 +186,11 @@ function get_receipt_no()
 	$num = 1;
 
 	$db = new Database();
-	$rows = $db->query("select ReceiptNo from sales order by SaleId desc limit 1");
+	$rows = $db->query("select MemberId from members order by MemberId desc limit 1");
 
 	if(is_array($rows))
 	{
-		$num = (int)$rows[0]['ReceiptNo'] + 1;
+		$num = (int)$rows[0]['MemberId'] + 1;
 	}
 
 	return $num;

@@ -67,7 +67,7 @@
                   <select class="js-example-basic-single mt-3 form-control" name="state" id="member" onchange="fetchmembers(this);">
                     <option selected disabled>-select-</option>
                     <?php foreach($members as $mem) {?>
-                  <option value="<?=$mem["MemberId"]?>"><?=$mem["Fullname"]?></option>
+                  <option value="<?=$mem["MemberId"]?>"><?=trim($mem["Fullname"])?></option>
                 <?php } ?>
                 </select>
               </div>
