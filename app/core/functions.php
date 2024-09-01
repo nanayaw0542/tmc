@@ -183,14 +183,14 @@ function crop($filename, $size = 400, $type = "product")
 
 function get_receipt_no()
 {
-	$num = 1;
+	$num = 100;
 
 	$db = new Database();
-	$rows = $db->query("select MemberId from members order by MemberId desc limit 1");
+	$rows = $db->query("select ConvertId from newconverts order by ConvertId desc limit 1");
 
 	if(is_array($rows))
 	{
-		$num = (int)$rows[0]['MemberId'] + 1;
+		$num = (int)$rows[0]['ConvertId'] + 1;
 	}
 
 	return $num;
@@ -237,16 +237,16 @@ function get_system_by_id($systemid)
 	return $class->getSpecific(['systemid' =>$systemid]);
 }
 
-function get_section_by_id($sectionid)
+function get_member_by_id($memberid)
 {
-	$class = new Section();
-	return $class->getSpecific(['sectionid' =>$sectionid]);
+	$class = new Member();
+	return $class->getSpecific(['memberid' =>$memberid]);
 }
 
-function get_port_by_id($portfolioid)
+function get_service_by_id($serviceid)
 {
-	$port = new Portfolio();
-	return $port->getSpecific(['portfolioid' =>$portfolioid]);
+	$port = new Service();
+	return $port->getSpecific(['serviceid' =>$serviceid]);
 }
 
 function get_religion_by_id($religionid)

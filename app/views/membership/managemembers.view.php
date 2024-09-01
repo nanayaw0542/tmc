@@ -50,9 +50,12 @@
                     <th style="font-size: 12px;">Member ID</th>
                     <th style="font-size: 12px;">Fullname</th>
                     <th style="font-size: 12px;">Gender</th>
+                    <th style="font-size: 12px;">Marital Status</th>
                     <th style="font-size: 12px;">Ministry</th>
                     <!-- <th style="font-size: 12px;">Bacenta</th> -->
                     <th style="font-size: 12px;">Occupation</th>
+                    <th style="font-size: 12px;">Contact</th>
+                    <th style="font-size: 12px;">Address</th>
                     <th style="font-size: 12px;">Added by</th>
                     <th style="font-size: 12px;">Date added</th>
                     <th style="font-size: 12px;">Status</th>
@@ -77,6 +80,7 @@
                      ?>
                     <td style="font-size: 12px;"><?=$title.'. '.$user['Fullname']?></td>
                     <td style="font-size: 12px;"><?=$user['Gender']?></td>
+                    <td style="font-size: 12px;"><?=$user['MaritalStatus']?></td>
                     <?php 
                       $getministry = get_ministry_by_id($user['MinistryId']);
                       if (empty($getministry)) {
@@ -88,6 +92,8 @@
                      ?>
                     <td style="font-size: 12px;"><?=$ministry?></td>
                     <td style="font-size: 12px;"><?=$user["Occupation"]?></td>
+                    <td style="font-size: 12px;"><?=$user["Telephone1"]?></td>
+                    <td style="font-size: 12px;"><?=$user["Address"]?></td>
                     <?php 
                       $getuser = get_user_by_id($user['AddedId']);
                       if (empty($getuser)) {

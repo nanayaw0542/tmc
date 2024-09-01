@@ -39,7 +39,7 @@
           <div class="card-header">
             <h3 class="card-title"><h3><b>ADD A NEW MEMBER</b></h3></h3>
             <div align="">
-              <div class="col-xl-3 col-md-6" >
+              <div class="col-xl-3 col-xl-6 col-md-6" >
               <input type="file" name="" id="excel_file" class="form-control">
               <div id="excel_data" class="mt-2"></div>
             </div>
@@ -50,14 +50,14 @@
           <form method="post" enctype="multipart/form-data">
           <div class="card-body">
             <div class="row">
-              <div class="col-md-3" hidden>
+              <div class="col-xl-3 col-md-6" hidden>
                   <label>Member Code</label>
                   <input type="text" name="memberid" id="passInput" onchange="makePass(this);" placeholder="Member Code" class="form-control" readonly>
               
               </div>
               <input type="text" name="addedid" value="<?=Auth::get('UserId')?>" hidden>
               <input type="text" name="userid" value="<?=Auth::get('UserId')?>" hidden>
-              <div class="col-md-3">
+              <div class="col-xl-4 col-md-6">
                 <label>Title</label>
                 <select class="form-control <?=!empty($errors['titleid']) ? 'border-danger': ''?>" name="titleid">
                   <option <?=get_select('titleid',"")?> selected disabled>-select-</option>
@@ -69,7 +69,7 @@
                 <small style="font-size: 10px;font-style: italic;" class="text-danger"><?=$errors['titleid']?></small>
                 <?php endif;?>
               </div>
-              <div class="col-md-3">
+              <div class="col-xl-4 col-md-6">
                   <label>First Name</label>
                   <input type="text" class="form-control <?=!empty($errors['firstname']) ? 'border-danger': ''?>" name="firstname" autofocus placeholder="First Name" value="<?=set_value("firstname")?>" autocomplete="off">
                   <?php if(!empty($errors['firstname'])) : ?>
@@ -77,7 +77,7 @@
                   <?php endif;?>
               </div>
 
-               <div class="col-md-3">
+               <div class="col-xl-4 col-md-6">
                   <label>Last Name</label>
                   <input type="text" class="form-control <?=!empty($errors['lastname']) ? 'border-danger': ''?>" name="lastname" id="lname" autocomplete="off" placeholder="Last Name"  value="<?=set_value("lastname")?>">
                   <?php if(!empty($errors['lastname'])) : ?>
@@ -85,7 +85,7 @@
                   <?php endif;?>
               </div>
 
-               <div class="col-md-3">
+               <div class="col-xl-4 col-md-6">
                   <label>Gender</label>
                   <select class="form-control <?=!empty($errors['gender']) ? 'border-danger': ''?>" name="gender">
                       <option <?=get_select('gender',"")?> selected disabled>-select-</option>
@@ -97,7 +97,7 @@
                 <?php endif;?>
               </div>
 
-              <div class="col-md-3">
+              <div class="col-xl-4 col-md-6">
                   <label>Date of Birth</label>
                   <input type="text" name="dob" value="<?=set_value("dob")?>" autocomplete="off" class="form-control <?=!empty($errors['dob']) ? 'border-danger': ''?>" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm" data-mask >
                   <?php if(!empty($errors['dob'])) : ?>
@@ -105,7 +105,7 @@
                 <?php endif;?>
               </div>
 
-              <div class="col-md-3">
+              <div class="col-xl-4 col-md-6">
                 <label>Age Range (Bracket)</label>
                 <select class="form-control <?=!empty($errors['agerange']) ? 'border-danger': ''?>" name="agerange">
                   <option <?=get_select('agerange',"")?> selected disabled>-select-</option>
@@ -122,7 +122,20 @@
                 <?php endif;?>
               </div>
 
-              <div class="col-md-3">
+              <div class="col-xl-4 col-md-6">
+                <label>Member Type</label>
+                <select class="form-control <?=!empty($errors['membertype']) ? 'border-danger': ''?>" name="membertype" >
+                  <option selected disabled>-select-</option>
+                  <option <?=get_select('membertype',"Normal Member")?> value="Normal Member">Normal Member</option>
+                  <option <?=get_select('membertype',"Shepherd")?> value="Shepherd">Shepherd</option>
+                  <option <?=get_select('membertype',"Church Worker")?> value="Church Worker">Church Worker</option>
+                  <option <?=get_select('membertype',"Pastor")?> value="Pastor">Pastor</option>
+                </select>
+                <?php if(!empty($errors['membertype'])) : ?>
+                <small style="font-size: 10px;font-style: italic;" class="text-danger"><?=$errors['membertype']?></small>
+                <?php endif;?>
+              </div>
+              <div class="col-xl-4 col-md-6">
                 <label>Marital Status</label>
                 <select class="form-control <?=!empty($errors['maritalstatus']) ? 'border-danger': ''?>" name="maritalstatus">
                   <option <?=get_select('maritalstatus',"")?> selected disabled>-select-</option>
@@ -135,7 +148,7 @@
                 <?php endif;?>
               </div>
 
-              <div class="col-md-3">
+              <div class="col-xl-4 col-md-6">
                   <label>Nationality</label>
                   <select class="form-control <?=!empty($errors['country']) ? 'border-danger': ''?>" name="country" >
                       <option disabled selected>-select-</option>
@@ -144,7 +157,7 @@
                   </select>
               </div>
 
-                <div class="col-md-3">
+                <div class="col-xl-4 col-md-6">
                   <label>Region</label>
                   <select class="form-control" name="region">
                       <option selected disabled>-select-</option>
@@ -154,7 +167,7 @@
                   </select>
               </div>
 
-              <div class="col-md-3">
+              <div class="col-xl-4 col-md-6">
                   <label>Location</label>
                   <input type="text" name="address" value="<?=set_value("address")?>" class="form-control <?=!empty($errors['address']) ? 'border-danger': ''?>" placeholder="Address of Location">
                   <?php if(!empty($errors['address'])) : ?>
@@ -162,7 +175,7 @@
                 <?php endif;?>
               </div>
 
-              <div class="col-md-3">
+              <div class="col-xl-4 col-md-6">
                   <label>Email</label>
                   <input type="email" class="form-control rounded <?=!empty($errors['email']) ? 'border-danger': ''?>" placeholder="Email Address" name="email" value="<?=set_value('email')?>"/>
                   <?php if(!empty($errors['email'])) : ?>
@@ -170,19 +183,19 @@
                 <?php endif;?>
               </div>
 
-              <div class="col-md-3">
+              <div class="col-xl-4 col-md-6">
                   <label>Telephone # (Whatsapp)</label>
                   <input type="text" name="telephone1" class="form-control <?=!empty($errors['telephone1']) ? 'border-danger': ''?>" value="<?=set_value("telephone1")?>" placeholder="Telephone # (Whatsapp)">
                   <?php if(!empty($errors['telephone1'])) : ?>
                 <small style="font-size: 10px;font-style: italic;" class="text-danger"><?=$errors['telephone1']?></small>
                 <?php endif;?>
               </div>
-              <div class="col-md-3">
+              <div class="col-xl-4 col-md-6">
                   <label>Telephone Number 2</label>
                   <input type="text" name="telephone2" class="form-control" value="<?=set_value("telephone2")?>" placeholder="Telephone Number">
               </div>
 
-              <div class="col-md-3">
+              <div class="col-xl-4 col-md-6">
                 <label>Education Level:</label>
                 <select class="form-control <?=!empty($errors['educationid']) ? 'border-danger': ''?>" name="educationid">
                   <option selected disabled>-select-</option>
@@ -195,7 +208,7 @@
               <?php endif;?>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-xl-4 col-md-6">
                 <label>Certificate Attained:</label>
                 <select class="form-control <?=!empty($errors['certificateid']) ? 'border-danger': ''?>" name="certificateid">
                   <option selected disabled>-select-</option>
@@ -208,7 +221,7 @@
               <?php endif;?>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-xl-4 col-md-6">
                 <label>Occupation</label>
                 <input type="text" name="occupation" class="form-control <?=!empty($errors['occupation']) ? 'border-danger': ''?>" value="<?=set_value("occupation")?>" placeholder="Occupation">
                 <?php if(!empty($errors['occupation'])) : ?>
@@ -216,12 +229,12 @@
               <?php endif;?>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-xl-4 col-md-6">
               <label>Occupation Description</label>
-              <textarea class="form-control" name="description" placeholder="Please enter the nature of your work"></textarea>
+              <input class="form-control" name="jobdescription" placeholder="Please enter the nature of your work">
             </div>
 
-            <div class="col-md-3">
+            <div class="col-xl-4 col-md-6">
                 <label>Ministry</label>
                 <select class="form-control <?=!empty($errors['ministryid']) ? 'border-danger': ''?>" name="ministryid" >
                     <option selected disabled>-select-</option>
@@ -235,7 +248,7 @@
               <?php endif;?>
             </div>
 
-            <div class="col-md-3" hidden>
+            <div class="col-xl-4 col-md-6" hidden>
                 <label>Status</label>
                 <select class="form-control" name="status">
                     <option <?=get_select('status',"")?>  disabled>-select-</option>
@@ -244,7 +257,7 @@
                 </select>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-xl-4 col-md-6">
                    <label>Member's Image<span class="required">*</span></label>
                    <input type="file" name="image" class="form-control <?=!empty($errors['image']) ? 'border-danger': ''?>" onchange="readUrl(this);">
                    <?php if(!empty($errors['image'])) : ?>
@@ -252,7 +265,7 @@
                     <?php endif;?>
                   </div><img src="assets/image/no-image.png" id="userImage" alt="image" class="shadow" style="width: 15%; display: inline-block;"><br> 
 
-                  <div class="col-md-12"><br>
+                  <div class="col-xl-12"><br>
                     <button class="btn btn-primary">SUBMIT</button>
                     <a href="<?=ROOT?>/managemembers"><button type="button" class="btn btn-warning">RESET</button></a>
                 </div>

@@ -14,6 +14,7 @@ class addattendance extends Controller
 		// $education = $db->query("select * from education");
 		$ministry = $db->query("select * from ministry order by ministryname asc");
 		$members = $db->query("select * from members order by fullname asc");
+		$services = $db->query("select * from services where status = 'active' order by servicetype asc");
 
 		$errors = [];
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -25,7 +26,9 @@ class addattendance extends Controller
 			$errors = $user->validate($_POST);
 
 			if (empty($errors)) {
-				
+			// 	if(empty($_POST['memberid'])){
+			// 	unset($_POST['memberid']);
+			// }
 
 				$user->insert($_POST,'attendance');
 

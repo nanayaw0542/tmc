@@ -44,6 +44,12 @@
               <!-- /.card-header -->
 
               <div class="row p-3">
+                 <div class="col-xl-3 col-md-6" hidden>
+                  <label>Convert Code</label>
+                  <input type="text" name="attendanceid" id="passInput" placeholder="Convert Code" class="form-control" readonly>
+              </div>
+              <input type="text" name="addedid" value="<?=Auth::get('UserId')?>" hidden>
+              <input type="text" name="userid" value="<?=Auth::get('UserId')?>" hidden>
                 <div class="col-xl-3 col-md-6 mt-3">
                   <label>Sort By</label>
                   <select class="form-control" name="sortby">
@@ -53,7 +59,19 @@
                     <option value="Bacenta">Bacenta</option>
                   </select>
                 </div>
-                <div class="col-xl-4 col-md-6 mt-3">
+                <div class="col-xl-3 col-md-6 mt-3">
+                  <label>Service Type</label>
+                  <select class="form-control <?=!empty($errors['serviceid']) ? 'border-danger': ''?>" name="serviceid">
+                    <option selected disabled>-select-</option>
+                    <?php foreach($services as $serve){ ?>
+                    <option value="<?=$serve["ServiceId"]?>"><?=$serve["ServiceType"]?></option>
+                    <?php } ?>
+                  </select>
+                  <?php if(!empty($errors['serviceid'])) : ?>
+                <small style="font-size: 10px;font-style: italic;" class="text-danger"><?=$errors['serviceid']?></small>
+                <?php endif;?>
+                </div>
+                <div class="col-xl-3 col-md-6 mt-3">
                   <label>Ministry</label>
                   <select class="form-control" name="sortby" id="ministryname" onchange="fetchministry(this);">
                     <option selected disabled>-select-</option>
@@ -62,14 +80,17 @@
                   <?php } ?>
                   </select>
                 </div>
-              <div class="col-xl-4 col-md-6 mt-2">
+              <div class="col-xl-3 col-md-6 mt-2">
                 <label class="p-1">Select a member</label>
-                  <select class="js-example-basic-single mt-3 form-control" name="state" id="member" onchange="fetchmembers(this);">
+                  <select class="js-example-basic-single mt-3 form-control  <?=!empty($errors['memberid']) ? 'border-danger': ''?>" name="memberid" id="member" onchange="fetchmembers(this);">
                     <option selected disabled>-select-</option>
                     <?php foreach($members as $mem) {?>
                   <option value="<?=$mem["MemberId"]?>"><?=trim($mem["Fullname"])?></option>
                 <?php } ?>
                 </select>
+                <?php if(!empty($errors['memberid'])) : ?>
+                <small style="font-size: 10px;font-style: italic;" class="text-danger"><?=$errors['memberid']?></small>
+                <?php endif;?>
               </div>
             </div>
               <div class="card-body">
@@ -92,15 +113,22 @@
               <div class="col-xl-4">
             <table class="table table-bordered table-striped">
               <thead>
-                <th style="color: green;">MARK ATTENDANCE</th>
-                <!-- <th>ABSENT</th> -->
-                <!-- Present <td><input type="radio" class="form-control" name=""></td> -->
+                <th class="text-center" style="color: green;">MARK ATTENDANCE</th>
               </thead>
               <tbody>
                 <tr>
-                  <td><input type="radio" class="" value="1" name=""> Present </td>
-                 
+                  <td>
+                    <select class="form-control <?=!empty($errors['attendancestatus']) ? 'border-danger': ''?>" name="attendancestatus">
+                      <option selected disabled>-select-</option>
+                      <option value="Present">Present</option>
+                      <option value="Absent">Absent</option>
+                    </select>
+                    <?php if(!empty($errors['attendancestatus'])) : ?>
+                <small style="font-size: 10px;font-style: italic;" class="text-danger"><?=$errors['attendancestatus']?></small>
+                <?php endif;?>
+                  </td>
                 </tr>
+                
               </tbody>
             </table>
           </div>
@@ -111,7 +139,8 @@
             
           </div>
           <div class="col-xl-4 col-md-6">
-            <button class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary">SUBMIT</button>
+            <a href="<?=ROOT?>/manageattendance"><button type="button" class="btn btn-warning">RESET</button></a>
           </div>
         </form>
             <!-- /.card -->
@@ -141,9 +170,23 @@
 
 <?php require viewsPath("partials/script"); ?>
 <script>
+  
    $(document).ready(function() {
     $('.js-example-basic-single').select2();
 });
+
+   function makePass(length) {
+           var result = '';
+          var characters = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+          var charactersLength = characters.length;
+          for (var i = 0; i < length; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            // counter += 1;
+          }
+          var passInput = document.getElementById('passInput');
+          passInput.value = "ATT"+ <?php echo date('y') .date("m")?> + result;
+         }
+         makePass(4);
 
  function fetchministry(val) {
     var x = document.getElementById("ministryname").value;

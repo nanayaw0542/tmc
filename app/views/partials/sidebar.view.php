@@ -11,6 +11,14 @@ $db = new Database();
     $query  = "select count(memberid) as totals from members where status ='Active'";
     $total = $db->query($query);
     $totalmember = $total[0]["totals"];
+
+    $query  = "select count(convertid) as totals from newconverts where status ='Active'";
+    $total = $db->query($query);
+    $totalconverts = $total[0]["totals"];
+
+    $query  = "select count(firsttimersid) as totals from firsttimers where status ='Active'";
+    $total = $db->query($query);
+    $totalfirsttimers = $total[0]["totals"];
  ?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -27,8 +35,8 @@ $db = new Database();
           <img src="<?=crop($_SESSION['USER']['Image'])?>" class="img-circle elevation-2 shadow" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?=$_SESSION['USER']['Username']?></a><b style="color: white;">Logged In as:</b>
-          <h6 class="shadow" style="color: white;"><?=$_SESSION['USER']['Role']?></h6>
+          <h4 class="d-block" style="color: white;"><?=$_SESSION['USER']['Fullname']?></h4><b style="color: white;">Logged In as:</b>
+          <h6 class="" style="color: white;"><?=$_SESSION['USER']['Role']?></h6>
         </div>
       </div>
 
@@ -62,36 +70,53 @@ $db = new Database();
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
-                Membership
+                Members
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-warning right"><?=$totalmember?></span>
+                <span class="badge badge-warning right"><?=$totalmember + $totalconverts + $totalfirsttimers?></span>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?=ROOT?>/managemembers" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Manage Membership</p>
+                  <span class="badge badge-primary right"><?=$totalmember?></span>
+                  <p>View Members</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?=ROOT?>/addmember" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add New Member</p>
-                </a>
-              </li>
-            <!--   <li class="nav-item">
-                <a href="pages/layout/boxed.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Boxed</p>
+                  <p>Add Member</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+                <a href="<?=ROOT?>/manageconverts" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Sidebar</p>
+                  <span class="badge badge-primary right"><?=$totalconverts?></span>
+                  <p>View Converts</p>
                 </a>
-              </li> -->
+              </li>
+            <li class="nav-item">
+                <a href="<?=ROOT?>/addconvert" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add New Convert</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="<?=ROOT?>/managefirsttimers" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <span class="badge badge-primary right"><?=$totalfirsttimers?></span>
+                  <p>View First Timers</p>
+                </a>
+              </li> 
+
+              <li class="nav-item">
+                <a href="<?=ROOT?>/addfirsttimers" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add First Timers</p>
+                </a>
+              </li> 
             </ul>
           </li>
           <li class="nav-item">
@@ -234,9 +259,9 @@ $db = new Database();
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
+                <a href="<?=ROOT?>/manageattendance" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Manage Attendance</p>
+                  <p>View Attendance</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -246,16 +271,22 @@ $db = new Database();
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/jsgrid.html" class="nav-link">
+                <a href="<?=ROOT?>/viewconvertattendance" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>jsGrid</p>
+                  <p>View Converts</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?=ROOT?>/convertsattendance" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Converts Attendance</p>
                 </a>
               </li>
             </ul>
           </li>
-          <!-- <li class="nav-header">EXAMPLES</li>
+          <li class="nav-header">SETTINGS</li>
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Calendar
@@ -263,6 +294,7 @@ $db = new Database();
               </p>
             </a>
           </li>
+          <!--
           <li class="nav-item">
             <a href="pages/gallery.html" class="nav-link">
               <i class="nav-icon far fa-image"></i>
@@ -360,7 +392,7 @@ $db = new Database();
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-plus-square"></i>
               <p>
-                Extras
+                System Settings
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -369,21 +401,21 @@ $db = new Database();
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                    Login & Register v1
+                    Manage Church
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="pages/examples/login.html" class="nav-link">
+                    <a href="<?=ROOT?>/manageservice" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Login v1</p>
+                      <p>Manage Services</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/examples/register.html" class="nav-link">
+                    <a href="<?=ROOT?>/addservice" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Register v1</p>
+                      <p>Add Service</p>
                     </a>
                   </li>
                   <li class="nav-item">

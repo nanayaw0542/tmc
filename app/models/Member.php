@@ -21,6 +21,8 @@ class Member extends Model
 					'email',
 					'maritalstatus',
 					'occupation',
+					'jobdescription',
+					'membertype',
 					'agerange',
 					'telephone1',
 					'telephone2',
@@ -79,6 +81,10 @@ class Member extends Model
 		if (empty($data['address'])) 
 		{
 			$errors['address'] = "Location Address is required";
+		}
+		if (empty($data['membertype'])) 
+		{
+			$errors['membertype'] = "Member Type is required";
 		}
 		if (empty($data['agerange'])) 
 		{

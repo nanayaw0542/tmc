@@ -9,7 +9,7 @@ class manageministry extends Controller
 	{
 		$db = new Database();
 
-		$ministry = $db->query("select * from ministry order by ministryname asc");
+		$ministry = $db->query("select * from ministry where status = 'active' order by ministryname asc");
 
 		require viewsPath("ministry/manageministry");
 	}

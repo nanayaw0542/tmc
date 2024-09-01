@@ -107,7 +107,7 @@ class Model extends Database
 			$_SESSION['updatestudent'] = "Congratulations!";
 		}
 
-		public function updateclasssubject($classsubjectid,$data)
+		public function updateconvert($convertid,$data)
 		{
 			$clean_array = $this->get_allowed_columns($data,$this->table);
 			$keys = array_keys($clean_array);
@@ -121,14 +121,14 @@ class Model extends Database
 
 			$query = trim($query,",");
 
-			$query .= " where classsubjectid = :classsubjectid";
-			$clean_array['classsubjectid'] = $classsubjectid;
+			$query .= " where convertid = :convertid";
+			$clean_array['convertid'] = $convertid;
 
 			$db = new Database;
 			$db->query($query,$clean_array);
 			$_SESSION['updateclasssubject'] = "Congratulations!";
 		}
-	public function updatesubject($subjectid,$data)
+	public function updateservice($serviceid,$data)
 		{
 		$clean_array = $this->get_allowed_columns($data,$this->table);
 		$keys = array_keys($clean_array);
@@ -142,15 +142,15 @@ class Model extends Database
 
 		$query = trim($query,",");
 
-		$query .= " where subjectid = :subjectid";
-		$clean_array['subjectid'] = $subjectid;
+		$query .= " where serviceid = :serviceid";
+		$clean_array['serviceid'] = $serviceid;
 
 		$db = new Database;
 		$db->query($query,$clean_array);
 		$_SESSION['updatesubject'] = "Congratulations!";
 	}
 
-	public function updateassign($teachersubjectid,$data)
+	public function updateattendance($attendanceid,$data)
 	{
 		$clean_array = $this->get_allowed_columns($data,$this->table);
 		$keys = array_keys($clean_array);
@@ -164,8 +164,8 @@ class Model extends Database
 
 		$query = trim($query,",");
 
-		$query .= " where teachersubjectid = :teachersubjectid";
-		$clean_array['teachersubjectid'] = $teachersubjectid;
+		$query .= " where attendanceid = :attendanceid";
+		$clean_array['attendanceid'] = $attendanceid;
 		$db = new Database;
 		$db->query($query,$clean_array);
 	}
@@ -440,7 +440,7 @@ public function deleteport($portfolioid)
 	}
 
 	// FUNCTION TO SELECT WHERE DATA IN A TABLE
-	public function wherebillstudent($data, $limit = 10, $offset = 0, $order = "desc", $order_column = "billstudentid")
+	public function whereservice($data, $limit = 10, $offset = 0, $order = "desc", $order_column = "serviceid")
 	{
 		// "select * from users where Username = :username && Password = :password"
 		$keys = array_keys($data);
@@ -561,7 +561,7 @@ public function deleteport($portfolioid)
 	}
 
 	// FUNCTION TO SELECT WHERE DATA IN A TABLE
-	public function wheresection($data, $limit = 10, $offset = 0, $order = "desc", $order_column = "sectionid")
+	public function whereattendance($data, $limit = 10, $offset = 0, $order = "desc", $order_column = "attendanceid")
 	{
 		// "select * from users where Username = :username && Password = :password"
 		$keys = array_keys($data);

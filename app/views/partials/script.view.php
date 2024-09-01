@@ -14,6 +14,7 @@
 <script src="vendors/select2/js/select2.full.min.js"></script>
 <script src="vendors/select2.min.js"></script>
 <script src="vendors/xlsx.full.min.js"></script>
+<script src="vendors/sweetalert2.min.js"></script>
 <!-- Bootstrap4 Duallistbox -->
 <script src="vendors/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
 <!-- InputMask -->
@@ -49,7 +50,7 @@
 <script src="vendors/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="vendors/dist/js/pages/dashboard.js"></script>
-<script src="vendors/sweetalert2.min.js"></script>
+
 
 
 </body>
