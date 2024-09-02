@@ -148,7 +148,7 @@ class User extends Model
 			}
 		}  
 
-		$roles = ['Accountant','Admin','Super Admin'];
+		$roles = ['Accountant','Admin','Super Admin','Shepherd'];
 		if (empty($data['role']) || !in_array($data['role'], $roles))
 		{
 			$errors['role'] = "Role is invalid";

@@ -20,7 +20,7 @@ class addfirsttimers extends Controller
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
-			$user = new Converts();
+			$user = new Firsttimers();
 
 			if(!empty($_FILES['image']['name']))
 			{

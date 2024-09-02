@@ -12,9 +12,7 @@ class Auth
 		{
 			return $_SESSION['USER'][$column];
 		}
-
-		return "Unknown";
-		
+		return "Unknown";	
 	}
 
 
@@ -28,19 +26,17 @@ class Auth
 			{
 				return true;
 			}
-			
 		}
 		return false;
-
 	}
 
 	public static function access_level($role)
 	{
 		$access_level['super_admin'] 	= ['Super Admin'];
 		$access_level['admin'] 			= ['Super Admin','Admin'];
-		$access_level['headteacher']	= ['Super Admin','Admin','Headteacher'];
+		$access_level['shepherd']		= ['Super Admin','Admin','Shepherd'];
 		$access_level['accountant'] 	= ['Super Admin','Admin','Accountant'];
-		$access_level['teacher'] 		= ['Super Admin','Admin','Accountant', 'Headteacher','Teacher'];
+		// $access_level['teacher'] 		= ['Super Admin','Admin','Accountant', 'Headteacher','Teacher'];
 
 		$myRole = self::get('Role');
 		if(in_array($myRole, $access_level[$role]))

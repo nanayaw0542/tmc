@@ -3,7 +3,7 @@
 /**
  * User Main Model
  */
-class Converts extends Model
+class Firsttimers extends Model
 {
 	protected $table = "firsttimers";
 	protected $allowed_columns = [

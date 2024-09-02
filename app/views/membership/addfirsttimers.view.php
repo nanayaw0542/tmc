@@ -252,7 +252,7 @@
 
                   <div class="col-xl-12"><br>
                     <button class="btn btn-primary">SUBMIT</button>
-                    <a href="<?=ROOT?>/managemembers"><button type="button" class="btn btn-warning">RESET</button></a>
+                    <a href="<?=ROOT?>/managefirsttimers"><button type="button" class="btn btn-warning">RESET</button></a>
                 </div>
 
             </div>
@@ -283,7 +283,7 @@
             // counter += 1;
           }
           var passInput = document.getElementById('passInput');
-          passInput.value = "CS"+ <?php echo date('y') .date("m")?> + result;
+          passInput.value = "FTS"+ <?php echo date('y') .date("m")?> + result;
          }
          makePass(4);
 

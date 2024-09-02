@@ -18,6 +18,55 @@ class manageattendance extends Controller
 
 		$attendance = $db->query("select * from attendance order by attendancestatus asc");
 
+		// getting data based on date
+		$startdate = $_GET['startdate'] ?? null;
+		$enddate = $_GET['enddate'] ?? null;
+
+		// $salesClass = new Sales();
+
+		// $limit = $_GET['limit'] ?? 10;
+		// $limit = (int)$limit;
+		// $limit = $limit < 1 ? 10 : $limit;
+
+		$query = "select * from attendance order by attendanceid asc";
+
+		// get today's sales total
+		$year = date("Y");
+		$month = date("m");
+		$day = date("d");
+
+		// $query_total = "SELECT sum(total) as totals FROM sales WHERE day(addeddate) = $day && month(addeddate) = $month && year(addeddate) = $year";
+
+		// if both startdate and enddat has data
+		if($startdate && $enddate)
+		{
+			$styear = date("Y",strtotime($startdate));
+			$stmonth = date("m",strtotime($startdate));
+			$stday = date("d",strtotime($startdate));
+
+			$endyear = date("Y",strtotime($enddate));
+			$endmonth = date("m",strtotime($enddate));
+			$endday = date("d",strtotime($enddate));
+
+			$query = "select * from attendance where (year(addeddate) >= '$styear' && month(addeddate) >= '$stmonth' && day(addeddate) >= '$stday') && (year(addeddate) <= '$endyear' && month(addeddate) <= '$endmonth' && day(addeddate) <= '$endday')";
+
+			// $query_total = "select sum(total) as totals from sales where (year(addeddate) >= '$styear' && month(addeddate) >= '$stmonth' && day(addeddate) >= '$stday') && (year(addeddate) <= '$endyear' && month(addeddate) <= '$endmonth' && day(addeddate) <= '$endday')";
+
+		}else
+		// if only startdate has data
+		if($startdate && !$enddate)
+		{
+			$styear = date("Y",strtotime($startdate));
+			$stmonth = date("m",strtotime($startdate));
+			$stday = date("d",strtotime($startdate));
+
+			$query = "select * from attendance where (year(addeddate) = '$styear' && month(addeddate) = '$stmonth' && day(addeddate) = '$stday')";
+
+			// $query_total = "select sum(total) as totals from sales where (year(addeddate) = '$styear' && month(addeddate) = '$stmonth' && day(addeddate) = '$stday')";
+
+		}
+		
+
 		require viewsPath("attendance/manageattendance");
 	}
 }

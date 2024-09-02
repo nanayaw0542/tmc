@@ -9,6 +9,8 @@ class adduser extends Controller
 	
 	function index()
 	{
+		$db = new Database();
+		$members = $db->query("select * from members where membertype = 'shepherd' order by fullname asc");
 		$errors = [];
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
@@ -51,21 +53,21 @@ class adduser extends Controller
 			
 		}
 
-		// if(Auth::access_level('super_admin') || Auth::access_level('admin'))
-		// {
+		if(Auth::access_level('super_admin') || Auth::access_level('admin'))
+		{
 			require viewsPath('auth/adduser');
-		// }
+		}
 
-		// else if(Auth::access_level('admin'))
-		// {
-		// 	require viewsPath('auth/adduser');
-		// }
+		else if(Auth::access_level('admin'))
+		{
+			require viewsPath('auth/adduser');
+		}
 
-		// else
-		// {
-		// 	Auth::setMessage("Only Admins can register users");
-		// 	require viewsPath('auth/denied');
-		// }
+		else
+		{
+			Auth::setMessage("Only Admins can register users");
+			require viewsPath('auth/denied');
+		}
 
 	}
 }

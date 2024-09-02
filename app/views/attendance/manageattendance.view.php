@@ -41,6 +41,29 @@
                 <h3 class="card-title px-5"><b class="badge bg-primary">Second Service</b>&nbsp<span class="badge badge-warning"><?=$totalsecondservice?></span></h3>
                 <a href="<?=ROOT?>/addattendance"><button class="btn btn-primary" style="float: right;">Add New Attendance</button></a>
               </div>
+              <div class="p-4">
+                <form class="row float-end">
+                  <div class="col-lg-3 col-md-3">
+                      <label for="start">Start Date</label>
+                      <input id="start" type="date" name="startdate" class="form-control" value="<?=!empty($_GET['startdate']) ? $_GET['startdate']:''?>">
+                  </div>
+
+                  <div class="col-lg-3 col-md-3">
+                      <label for="end">End Date</label>
+                      <input id="end" type="date" name="enddate" class="form-control" value="<?=!empty($_GET['enddate']) ? $_GET['enddate']:''?>">
+                  </div>
+
+                  <!-- <div class="col-lg-3 col-md-3">
+                      <label for="limit">Rows</label>
+                      <input style="max-width: 80px;" id="limit" type="number" name="limit" min="1" class="form-control" value="<?=!empty($_GET['limit']) ? $_GET['limit']:'10'?>">
+                  </div> -->
+                  
+                  <button class="btn btn-primary">Go <i class="fa fa-chevron-right"> </i></button>
+                  <input type="hidden" name="p_name" value="admin">
+                <input type="hidden" name="tab" value="sales">
+                </form> 
+                <div class="clearfix"></div>
+              </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">

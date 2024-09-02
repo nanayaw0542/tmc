@@ -65,6 +65,7 @@
                   <option <?=get_select('servicetype',"First Service")?> value="First Service">First Service</option>
                   <option <?=get_select('servicetype',"Second Service")?> value="Second Service">Second Service</option>
                   <option <?=get_select('servicetype',"Joint Service")?> value="Joint Service">Joint Service</option>
+                  <option <?=get_select('servicetype',"Both Services")?> value="Both Services">Both Services</option>
                 </select>
                 <?php if(!empty($errors['servicetype'])) : ?>
                   <small style="font-size: 10px; font-style: italic;" class="text-danger col-12"><?=$errors['servicetype']?></small>

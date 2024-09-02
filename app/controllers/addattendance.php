@@ -38,21 +38,21 @@ class addattendance extends Controller
 			
 		}
 
-		// if(Auth::access_level('super_admin') || Auth::access_level('admin'))
-		// {
+		 if(Auth::access_level('super_admin') || Auth::access_level('admin'))
+		 {
 			require viewsPath('attendance/addattendance');
-		// }
+		 }
 
-		// else if(Auth::access_level('admin'))
-		// {
-		// 	require viewsPath('auth/addmember');
-		// }
+		else if(Auth::access_level('admin'))
+		{
+			require viewsPath('attendance/addattendance');
+		}
 
-		// else
-		// {
-		// 	Auth::setMessage("Only Admins can register users");
-		// 	require viewsPath('auth/denied');
-		// }
+		else
+		{
+			Auth::setMessage("Only Admins can register users");
+			require viewsPath('auth/denied');
+		}
 
 	}
 }
