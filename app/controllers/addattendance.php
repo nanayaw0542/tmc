@@ -32,13 +32,12 @@ class addattendance extends Controller
 
 				$user->insert($_POST,'attendance');
 
-
 				redirect('addattendance');			
 			}
 			
 		}
 
-		 if(Auth::access_level('super_admin') || Auth::access_level('admin'))
+		 if(Auth::access_level('super_admin') || Auth::access_level('admin') || Auth::access_level('shepherd'))
 		 {
 			require viewsPath('attendance/addattendance');
 		 }

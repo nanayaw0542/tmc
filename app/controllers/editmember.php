@@ -82,7 +82,7 @@ class editmember extends Controller
 	{
 		require viewsPath('membership/editmember');
 	}
-	else if(Auth::access_level('headteacher'))
+	else if(Auth::access_level('shepherd'))
 	{
 		require viewsPath('membership/editmember');
 	}

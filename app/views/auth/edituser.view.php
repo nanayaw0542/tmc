@@ -175,6 +175,9 @@
                 <label>Role</label>
                 <select class="form-control <?=!empty($errors['role']) ? 'border-danger': ''?>" name="role" >
                     <option <?=get_select('role',"")?> selected value="<?=$row["Role"]?>"><?=$row["Role"]?></option>
+                   <option <?=get_select('role',"First Timer Shepherd")?> value="First Timer Shepherd">First Timer Shepherd</option>
+                   <option <?=get_select('role',"Shepherd")?> value="Shepherd">Shepherd</option>
+                   <option <?=get_select('role',"Accountant")?> value="Accountant">Accountant</option>
                    <option <?=get_select('role',"Admin")?> value="Admin">Admin</option>
                    <option <?=get_select('role',"Super Admin")?> value="Super Admin">Super Admin</option>
                 </select>

@@ -35,7 +35,7 @@ $db = new Database();
           <img src="<?=crop($_SESSION['USER']['Image'])?>" class="img-circle elevation-2 shadow" alt="User Image">
         </div>
         <div class="info">
-          <h4 class="d-block" style="color: white;"><?=$_SESSION['USER']['Fullname']?></h4><b style="color: white;">Logged In as:</b>
+          <h4 class="d-block" style="color: white;"><?=strtoupper($_SESSION['USER']['Username'])?></h4><b style="color: white;">Logged In as:</b>
           <h6 class="" style="color: white;"><?=$_SESSION['USER']['Role']?></h6>
         </div>
       </div>
@@ -253,61 +253,6 @@ $db = new Database();
           <li class="nav-header">SETTINGS</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                Calendar
-                <span class="badge badge-info right">2</span>
-              </p>
-            </a>
-          </li>
-          <!--
-          <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
-              <i class="nav-icon far fa-image"></i>
-              <p>
-                Gallery
-              </p>
-            </a>
-          </li> -->
-         <!--  <li class="nav-item">
-            <a href="pages/kanban.html" class="nav-link">
-              <i class="nav-icon fas fa-columns"></i>
-              <p>
-                Kanban Board
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-envelope"></i>
-              <p>
-                Mailbox
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/mailbox/mailbox.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inbox</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/mailbox/compose.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Compose</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/mailbox/read-mail.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Read</p>
-                </a>
-              </li>
-            </ul>
-          </li> -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Users
@@ -329,13 +274,13 @@ $db = new Database();
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/e-commerce.html" class="nav-link">
+                <a href="<?=ROOT?>/profile" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>User Profile</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="<?=ROOT?>/profile" class="nav-link">
+              <!-- <li class="nav-item">
+                <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Projects</p>
                 </a>
@@ -351,7 +296,7 @@ $db = new Database();
                   <i class="far fa-circle nav-icon"></i>
                   <p>Contact us</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           <li class="nav-item">
@@ -387,22 +332,22 @@ $db = new Database();
                   <li class="nav-item">
                     <a href="pages/examples/forgot-password.html" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Forgot Password v1</p>
+                      <p>View System Setting</p>
                     </a>
                   </li>
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                     <a href="pages/examples/recover-password.html" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Recover Password v1</p>
                     </a>
-                  </li>
+                  </li> -->
                 </ul>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                    Login & Register v2
+                    Reports
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
@@ -410,7 +355,7 @@ $db = new Database();
                   <li class="nav-item">
                     <a href="pages/examples/login-v2.html" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Login v2</p>
+                      <p>Attendance Report</p>
                     </a>
                   </li>
                   <li class="nav-item">

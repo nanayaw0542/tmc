@@ -39,6 +39,7 @@
               <div class="card-header">
                 <h3 class="card-title "><b class="badge bg-primary">First Service</b>&nbsp<span class="badge badge-warning"><?=$totalfirstservice?></span></h3>
                 <h3 class="card-title px-5"><b class="badge bg-primary">Second Service</b>&nbsp<span class="badge badge-warning"><?=$totalsecondservice?></span></h3>
+                <h3 class="card-title px-5"><b class="badge bg-primary">Both Services</b>&nbsp<span class="badge badge-warning"><?=$totalbothservice?></span></h3>
                 <a href="<?=ROOT?>/addattendance"><button class="btn btn-primary" style="float: right;">Add New Attendance</button></a>
               </div>
               <div class="p-4">
@@ -97,14 +98,8 @@
                      ?>
                      <?php 
                       $titles = get_title_by_id($user['TitleId']);
-                      if (empty($titles)) {
-                        $title = "";
-                      }
-                      else{
-                      $title = $titles["Title"];
-                    }
                      ?>
-                    <td style="font-size: 12px;"><?=$title.'. '.$member?></td>
+                    <td style="font-size: 12px;"><?=$titles["Title"].' '.$member?></td>
                    
                     <?php 
                       $getministry = get_ministry_by_id($user['MinistryId']);

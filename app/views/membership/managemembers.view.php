@@ -78,7 +78,7 @@
                       $title = $getministry["Title"];
                     }
                      ?>
-                    <td style="font-size: 12px;"><?=$title.'. '.$user['Fullname']?></td>
+                    <td style="font-size: 12px;"><?=$title.' '.$user['Fullname']?></td>
                     <td style="font-size: 12px;"><?=$user['Gender']?></td>
                     <td style="font-size: 12px;"><?=$user['MaritalStatus']?></td>
                     <?php 

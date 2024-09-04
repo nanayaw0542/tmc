@@ -39,7 +39,7 @@ class User extends Model
             $errors['firstname'] = "Firstname is required";
         }
 
-        elseif(!preg_match('/^[a-zA-Z]+$/', $data['firstname']))
+        elseif(!preg_match('/^[a-z A-Z]+$/', $data['firstname']))
         {
             $errors['firstname'] = "Only letters are allowed in Firstname";
         }
@@ -49,7 +49,7 @@ class User extends Model
 			$errors['lastname'] = "Lastname is required";
 		}
 
-		elseif (!preg_match('/^[a-zA-Z]+$/', $data['lastname']))
+		elseif (!preg_match('/^[a-z A-Z]+$/', $data['lastname']))
 		 {
 			$errors['lastname'] = "Only letters are allowed in Lastname";
 		}
@@ -148,7 +148,7 @@ class User extends Model
 			}
 		}  
 
-		$roles = ['Accountant','Admin','Super Admin','Shepherd'];
+		$roles = ['Accountant','Admin','Super Admin','Shepherd','First Timer Shepherd'];
 		if (empty($data['role']) || !in_array($data['role'], $roles))
 		{
 			$errors['role'] = "Role is invalid";

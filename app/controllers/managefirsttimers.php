@@ -11,7 +11,7 @@ class managefirsttimers extends Controller
 
     $members = $db->query("select * from firsttimers order by fullname asc");
 
-    if(Auth::access_level('super_admin') || Auth::access_level('admin'))
+    if(Auth::access_level('super_admin') || Auth::access_level('shepherd')|| Auth::access_level('firsttimershepherd'))
      {
       require viewsPath("membership/managefirsttimers");
      }

@@ -479,6 +479,26 @@ public function deleteport($portfolioid)
 		return $db->query($query,$data);
 	}
 
+// FUNCTION TO SELECT WHERE DATA IN A TABLE
+	public function whereuser($data, $limit = 10, $offset = 0, $order = "desc", $order_column = "userid")
+	{
+		// "select * from users where Username = :username && Password = :password"
+		$keys = array_keys($data);
+
+		$query = "select * from $this->table where ";
+
+		foreach ($keys as $key)
+		{
+			$query .= "$key = :$key && ";
+		}
+
+		$query = trim($query, "&& ");
+		$query .= " order by $order_column $order limit $limit offset $offset";
+		
+		$db = new Database;
+		return $db->query($query,$data);
+	}
+
 
 // FUNCTION TO SELECT WHERE DATA IN A TABLE
 	public function whereclassteacher($data, $limit = 10, $offset = 0, $order = "desc", $order_column = "teacherid")

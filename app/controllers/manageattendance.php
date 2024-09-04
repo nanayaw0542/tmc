@@ -16,6 +16,10 @@ class manageattendance extends Controller
 	    $total = $db->query($query);
 	    $totalsecondservice = $total[0]["totals"];
 
+	    $query  = "select count(attendanceid) as totals from attendance where serviceid ='SER2409247'";
+	    $total = $db->query($query);
+	    $totalbothservice = $total[0]["totals"];
+
 		$attendance = $db->query("select * from attendance order by attendancestatus asc");
 
 		// getting data based on date
@@ -65,8 +69,21 @@ class manageattendance extends Controller
 			// $query_total = "select sum(total) as totals from sales where (year(addeddate) = '$styear' && month(addeddate) = '$stmonth' && day(addeddate) = '$stday')";
 
 		}
-		
+		if(Auth::access_level('super_admin') || Auth::access_level('admin'))
+		{
+			require viewsPath("attendance/manageattendance");
+		}
 
-		require viewsPath("attendance/manageattendance");
+		else if(Auth::access_level('shepherd'))
+		{
+			require viewsPath("attendance/manageattendance");
+		}
+
+		else
+		{
+			Auth::setMessage("Only Admins can register users");
+			require viewsPath('auth/denied');
+		}
+		
 	}
 }
